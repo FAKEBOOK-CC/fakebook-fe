@@ -40,6 +40,19 @@
     "toggle": {
       "hide": "Post is hidden.",
       "restore": "Restore?"
+    },
+    "privacy": {
+      "title": "Who can see your post?",
+      "public": "Public",
+      "friends": "Friends",
+      "private": "Private",
+      "cancel": "Cancel",
+      "save": "Save",
+      "description": {
+        "public": "Everyone can see this post.",
+        "friends": "Only friends can see this post.",
+        "private": "Only you can see this post."
+      }
     }
   },
   "landing": {

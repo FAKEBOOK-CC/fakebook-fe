@@ -72,7 +72,7 @@ const PostModal: React.FC<PostModalProps> = ({ user, post, closePost }) => {
     }
   }
 
-  const handleChangeContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChangeContent = (event: ChangeEvent<HTMLInputElement>) => {
     setContent(event.target.value)
   }
 
@@ -145,12 +145,12 @@ const PostModal: React.FC<PostModalProps> = ({ user, post, closePost }) => {
             className="text-xl font-bold"
           />
           <div className="flex flex-col w-full bg-white rounded-lg min-h-[200px] mt-4">
-            <textarea
+            <Textarea
               className="text-lg w-full border-b-none"
               placeholder={t('placeholder')}
               value={content}
               onChange={handleChangeContent}
-              rows={6}
+              minRows={6}
             />
             <div className="w-full flex gap-2 flex-wrap mt-2">
               {mediaFiles.map((mediaFile) => (

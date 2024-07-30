@@ -15,7 +15,7 @@ import { POST_VARIANTS } from '@/utils/constant/variants'
 import FCarousel from './FCarousel'
 import Options from '../posts/Options'
 
-const Post: React.FC<PostProps> = ({ post, variant, toggleEditModal }) => {
+const Post: React.FC<PostProps> = ({ post, variant, toggleEditModal, togglePrivacyModal }) => {
   const t = useTranslations('post')
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -34,6 +34,10 @@ const Post: React.FC<PostProps> = ({ post, variant, toggleEditModal }) => {
 
   const toggleEditPost = () => {
     toggleEditModal()
+  }
+
+  const setPrivacy = () => {
+    togglePrivacyModal()
   }
 
   const items: FCarouselItemProps[] = [
@@ -95,7 +99,13 @@ const Post: React.FC<PostProps> = ({ post, variant, toggleEditModal }) => {
                   >
                     <CiCircleMore />
                   </Button>
-                  {isMenuOpen && <Options hidePost={togglePost} editPost={toggleEditPost} />}
+                  {isMenuOpen && (
+                    <Options
+                      hidePost={togglePost}
+                      editPost={toggleEditPost}
+                      setPrivacy={setPrivacy}
+                    />
+                  )}
                 </div>
                 <div
                   className={`${

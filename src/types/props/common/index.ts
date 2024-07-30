@@ -5,6 +5,7 @@ export interface PostProps {
   post: IPost
   variant?: POST_VARIANTS
   toggleEditModal: () => void
+  togglePrivacyModal: () => void
 }
 
 export interface OverlayProps {

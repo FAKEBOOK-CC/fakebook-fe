@@ -40,6 +40,19 @@
     "toggle": {
       "hide": "Bài đăng đã bị ẩn.",
       "restore": "Khôi phục?"
+    },
+    "privacy": {
+      "title": "Ai có thể xem bài viết của bạn?",
+      "public": "Công khai",
+      "friends": "Bạn bè",
+      "private": "Riêng tư",
+      "cancel": "Hủy",
+      "save": "Lưu",
+      "description": {
+        "public": "Bất kỳ ai ở trên hoặc ngoài Fakebook.",
+        "friends": "Bạn bè của bạn trên Fakebook.",
+        "private": "Chỉ có bạn mới xem được bài viết này."
+      }
     }
   },
   "landing": {

@@ -2,6 +2,7 @@
 
 import FImage from '@/components/common/FImage'
 import PostModal from '@/components/posts/PostModal'
+import PrivacyModal from '@/components/posts/PrivacyModal'
 import Posts from '@/components/home/Posts'
 import MainLayout from '@/components/layouts/MainLayout'
 import { fakePosts } from '@/mock/posts'
@@ -10,13 +11,16 @@ import { Button } from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
 import { useState, useEffect } from 'react'
 import { IPost } from '@/types/post'
+import { PostPrivacyEnum } from '@/utils/constant'
 
 const Page = () => {
   const t = useTranslations('title')
   const tPost = useTranslations('post')
 
   const [isPostModalOpen, setIsPostModalOpen] = useState(false)
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false)
   const [selectedPost, setSelectedPost] = useState<IPost | undefined>(undefined)
+  const [selectedPrivacy, setSelectedPrivacy] = useState<PostPrivacyEnum>(PostPrivacyEnum.PUBLIC)
   const user = useAppSelector((state) => state.user)
 
   const [imageUrl, setImageUrl] = useState<string>('')
@@ -41,6 +45,10 @@ const Page = () => {
     setIsPostModalOpen(true)
   }
 
+  const togglePrivacyModal = () => {
+    setIsPrivacyModalOpen(true)
+  }
+
   const handleSelectedPost = (postId: string) => {
     try {
       const post = getPostById(postId)
@@ -48,6 +56,10 @@ const Page = () => {
     } catch (error) {
       console.error(error instanceof Error ? error.message : 'An unknown error occurred')
     }
+  }
+
+  const handleSavePrivacy = (privacy: PostPrivacyEnum) => {
+    setSelectedPrivacy(privacy)
   }
 
   return (
@@ -63,13 +75,22 @@ const Page = () => {
               {tPost('create_placeholder')}
             </Button>
           </div>
-          <div className="pb-[80px]">
-            <Posts posts={fakePosts} toggleEditPost={(postId) => handleSelectedPost(postId)} />
+          <div className="pb-[20px]">
+            <Posts
+              posts={fakePosts}
+              toggleEditPost={(postId) => handleSelectedPost(postId)}
+              toggleSetPrivacyModal={togglePrivacyModal}
+            />
           </div>
         </div>
         {isPostModalOpen && (
           <PostModal user={user} post={selectedPost} closePost={() => setIsPostModalOpen(false)} />
         )}
+        <PrivacyModal
+          isOpen={isPrivacyModalOpen}
+          onClose={() => setIsPrivacyModalOpen(false)}
+          onSave={handleSavePrivacy}
+        />
       </div>
     </MainLayout>
   )

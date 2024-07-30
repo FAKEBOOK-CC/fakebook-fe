@@ -25,6 +25,10 @@ const TrendingSidebar = ({ posts, trendingPeople, isVisible }: TrendingSidebarPr
     // handle
   }
 
+  const setPrivacy = () => {
+    // handle
+  }
+
   return (
     <div
       className={`fixed bottom-0 right-0 h-[88vh] w-[100vw] overflow-y-auto pb-[12vh] border-l border-gray-300 bg-white shadow-md transform border-none
@@ -49,6 +53,7 @@ const TrendingSidebar = ({ posts, trendingPeople, isVisible }: TrendingSidebarPr
               post={post}
               variant={POST_VARIANTS.sidebar}
               toggleEditModal={() => handleSelectedPost}
+              togglePrivacyModal={() => setPrivacy}
             />
           ))}
         </div>
